@@ -51,7 +51,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Explosivo"
+                    android:text="Explosivos"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Correios - Corta alarme - Leva DVR - Usa luvas"
+                    android:text="Correios-CortaAlarme-LevaDVR-UsaLuvas"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBoxMoedaFalsa" />
@@ -171,7 +171,6 @@
                     android:ems="10"
                     android:hint="Escolha a data provável"
                     android:inputType="textPersonName"
-                    android:onClick="onClickEditText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.503"
                     app:layout_constraintStart_toStartOf="parent"
@@ -197,7 +196,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Provável: organização criminosa"
+                    android:text="Provável organização criminosa"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBoxViolencia" />
@@ -224,7 +223,6 @@
                     android:ems="10"
                     android:hint="Digite outro Modus Operandi"
                     android:inputType="textPersonName"
-                    android:onClick="onClickEditText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBoxOutroModusOperandi" />
@@ -298,7 +296,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Correios - Arma - Pela porta giratória"
+                    android:text="Correios-Arma-Pela-Porta-Giratoria"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosCortaAlarme" />
@@ -338,7 +336,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Correios - Veículo - Com endereço da abordagem"
+                    android:text="Correios-Veiculo-Com-Endereco-Da-Abordagem"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosArma" />
@@ -413,7 +411,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Correios - Veículo - Zona Sul - Com endereço da abordagem"
+                    android:text="Correios-Veiculo-ZonaSul-Com-Endereco-Da-Abordagem"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -439,7 +437,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Correios - Superbonder"
+                    android:text="Correios-Superbonder"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -452,7 +450,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Correios - Dois de moto"
+                    android:text="Correios-Dois-De-Moto"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -465,11 +463,25 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Correios - Veículo - Zona norte Alvorada - Com endereço da abordagem"
+                    android:text="Correios-Veiculo-ZonaNorteAlvorada-Com-Endereco-Da-Abordagem"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosVeiculoEnd" />
+
+                <Button
+                    android:id="@+id/buttonSobreOFato"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/blue"
+                    android:text="Salvar"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextOutroModusOperandi" />
             </android.support.constraint.ConstraintLayout>
 
         </android.support.constraint.ConstraintLayout>

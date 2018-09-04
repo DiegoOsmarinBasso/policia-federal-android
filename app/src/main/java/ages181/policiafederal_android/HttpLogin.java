@@ -27,10 +27,12 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
     private Editable usuario;
     private Editable senha;
 
-    public HttpLogin (Editable usuario, Editable senha){
+    public HttpLogin(Editable usuario, Editable senha) {
         this.usuario = usuario;
         this.senha = senha;
-    };
+    }
+
+    ;
 
     private Exception exception;
 
@@ -44,7 +46,7 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
             // GET /login
             String credentials = usuario + ":" + senha;
-            String basic = "Basic " + Base64.encodeToString(credentials.getBytes(),Base64.NO_WRAP);
+            String basic = "Basic " + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
 
             Request requestLogin = new Request.Builder()
                     .addHeader("content-type", "application/json")
@@ -69,12 +71,23 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
                 Request requestSignup = new Request.Builder()
                         .addHeader("content-type", "application/json")
-                        .addHeader("x-access-token", token.getToken())
+                        .addHeader("x-access-token", StaticProperties.getToken())
                         .post(body_ocorrencia)
                         .url(StaticProperties.getUrl() + "signup")
                         .build();
 
                 Response responseSignup = client.newCall(requestSignup).execute();
+
+                Request requestListas = new Request.Builder()
+                        .addHeader("content-type", "application/json")
+                        .addHeader("x-access-token", StaticProperties.getToken())
+                        .url(StaticProperties.getUrl() +"obter_listas")
+                        .build();
+                Response responseListas = client.newCall(requestListas).execute();
+
+                JSONObject listas = new JSONObject(responseListas.body().string());
+
+                StaticProperties.setJsonListas(listas);
 
 
                 System.out.println(responseSignup.body().string());
@@ -86,11 +99,9 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return null;
 
         }
-
     }
-
 }

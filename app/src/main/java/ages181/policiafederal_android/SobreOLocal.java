@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -26,34 +27,46 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class SobreOLocal extends Fragment {
-    EditText horaChegada, dataChegada;
-    Spinner spCondicoesLocal;
-    Calendar horarioAtual = Calendar.getInstance();
+    private EditText horaChegada, dataChegada, infoAdicional;
+    private Spinner spCondicoesLocal;
+    private Calendar horarioAtual = Calendar.getInstance();
     private Context context;
+    private String itemSpinner;
 
 
     private static final String[] condicoesLocal = { "Condições do Local",
-            "Preservado", "Pouco preservado", "Não preservado" };
-    ArrayAdapter<String> listaCondicoesLocal;
-    Spinner spinnerCondicoesLocal;
+            "Preservado", "Não preservado" };
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.activity_sobre_o_local, container, false);
 
-        horaChegada = (EditText) v.findViewById(R.id.etHoraChegada);
-        dataChegada = (EditText) v.findViewById(R.id.etDataChegada);
-        spCondicoesLocal = (Spinner) v.findViewById(R.id.spCondicoesLocal);
+        horaChegada = v.findViewById(R.id.etHoraChegada);
+        dataChegada = v.findViewById(R.id.etDataChegada);
+        spCondicoesLocal = v.findViewById(R.id.spCondicoesLocal);
+        infoAdicional = v.findViewById(R.id.etInfoAdicional);
         dataChegada.setFocusable(false);
         horaChegada.setFocusable(false);
         showTimePickerDialog();
         showDatePickerDialog();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1, condicoesLocal);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(context,android.R.layout.simple_list_item_1, condicoesLocal);
         spCondicoesLocal.setAdapter(adapter);
 
+        carregaSobreOLocal();
 
+        Button button = (Button) v.findViewById(R.id.buttonSobreOLocal);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                HttpSobreOLocal http_sobre_o_local = new HttpSobreOLocal(infoAdicional.getText().toString());
+                http_sobre_o_local.execute();
+            }
+        });
 
         return v;
     }
@@ -68,18 +81,19 @@ public class SobreOLocal extends Fragment {
             }
 
         });
-    } //Fim showTimePickerDialog
+    }
 
-    //Captar horario selecionada
     protected TimePickerDialog.OnTimeSetListener captarHorario = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hora, int minuto) {
-            horaChegada.setText(hora+":"+minuto);
+            if(minuto < 10){
+                horaChegada.setText(hora+":0"+minuto);
+            } else {
+                horaChegada.setText(hora+":"+minuto);
+            }
         }
     };
 
-
-    //Exibir DataPicker
     public void showDatePickerDialog(){
         dataChegada.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,9 +102,8 @@ public class SobreOLocal extends Fragment {
                         horarioAtual.get(Calendar.MONTH), horarioAtual.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+    }
 
-    }//Fim showDatePickerDialog
-    //Captar data selecionada
     protected DatePickerDialog.OnDateSetListener captarData = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -98,6 +111,24 @@ public class SobreOLocal extends Fragment {
         }
     };
 
+    public void carregaSobreOLocal(){
+
+        itemSpinner = CarregarOcorrencia.getSbCondicoesLocal();
+
+        if(itemSpinner == null){
+            spCondicoesLocal.setSelection(0);
+        } else {
+            for(int i = 1; i < spCondicoesLocal.getAdapter().getCount(); i++){
+                if(itemSpinner.equalsIgnoreCase(spCondicoesLocal.getItemAtPosition(i).toString())) {
+                    spCondicoesLocal.setSelection(i);
+                    break;
+                }
+            }
+        }
+        dataChegada.setText(CarregarOcorrencia.getSbDatachegada());
+        horaChegada.setText(CarregarOcorrencia.getSbHoraChegada());
+        infoAdicional.setText(CarregarOcorrencia.getSbInfo());
+    }
 
     public static SobreOLocal newInstance() {
 

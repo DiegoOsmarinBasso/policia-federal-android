@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -28,6 +29,8 @@ public class TelaEndereco extends Fragment{
     private String[] cidadesSC = {"Abdon Batista", "Abelardo Luz", "Agrolândia", "Agronômica", "Água Doce", "Águas de Chapecó", "Águas Frias", "Águas Mornas", "Alfredo Wagner", "Alto Bela Vista", "Anchieta", "Angelina", "Anita Garibaldi", "Anitápolis", "Antônio Carlos", "Apiúna", "Arabutã", "Araquari", "Araranguá", "Armazém", "Arroio Trinta", "Arvoredo", "Ascurra", "Atalanta", "Aurora", "Balneário Arroio do Silva", "Balneário Barra do Sul", "Balneário Camboriú", "Balneário Gaivota", "Bandeirante", "Barra Bonita", "Barra Velha", "Bela Vista do Toldo", "Belmonte", "Benedito Novo", "Biguaçu", "Blumenau", "Bocaina do Sul", "Bom Jardim da Serra", "Bom Jesus", "Bom Jesus do Oeste", "Bom Retiro", "Bombinhas", "Botuverá", "Braço do Norte", "Braço do Trombudo", "Brunópolis", "Brusque", "Caçador", "Caibi", "Calmon", "Camboriú", "Campo Alegre", "Campo Belo do Sul", "Campo Erê", "Campos Novos", "Canelinha", "Canoinhas", "Capão Alto", "Capinzal", "Capivari de Baixo", "Catanduvas", "Caxambu do Sul", "Celso Ramos", "Cerro Negro", "Chapadão do Lageado", "Chapecó", "Cocal do Sul", "Concórdia", "Cordilheira Alta", "Coronel Freitas", "Coronel Martins", "Correia Pinto", "Corupá", "Criciúma", "Cunha Porã", "Cunhataí", "Curitibanos", "Descanso", "Dionísio Cerqueira", "Dona Emma", "Doutor Pedrinho", "Entre Rios", "Ermo", "Erval Velho", "Faxinal dos Guedes", "Flor do Sertão", "Florianópolis", "Formosa do Sul", "Forquilhinha", "Fraiburgo", "Frei Rogério", "Galvão", "Garopaba", "Garuva", "Gaspar", "Governador Celso Ramos", "Grão Pará", "Gravatal", "Guabiruba", "Guaraciaba", "Guaramirim", "Guarujá do Sul", "Guatambú", "Herval d'Oeste", "Ibiam", "Ibicaré", "Ibirama", "Içara", "Ilhota", "Imaruí", "Imbituba", "Imbuia", "Indaial", "Iomerê", "Ipira", "Iporã do Oeste", "Ipuaçu", "Ipumirim", "Iraceminha", "Irani", "Irati", "Irineópolis", "Itá", "Itaiópolis", "Itajaí", "Itapema", "Itapiranga", "Itapoá", "Ituporanga", "Jaborá", "Jacinto Machado", "Jaguaruna", "Jaraguá do Sul", "Jardinópolis", "Joaçaba", "Joinville", "José Boiteux", "Jupiá", "Lacerdópolis", "Lages", "Laguna", "Lajeado Grande", "Laurentino", "Lauro Muller", "Lebon Régis", "Leoberto Leal", "Lindóia do Sul", "Lontras", "Luiz Alves", "Luzerna", "Macieira", "Mafra", "Major Gercino", "Major Vieira", "Maracajá", "Maravilha", "Marema", "Massaranduba", "Matos Costa", "Meleiro", "Mirim Doce", "Modelo", "Mondaí", "Monte Carlo", "Monte Castelo", "Morro da Fumaça", "Morro Grande", "Navegantes", "Nova Erechim", "Nova Itaberaba", "Nova Trento", "Nova Veneza", "Novo Horizonte", "Orleans", "Otacílio Costa", "Ouro", "Ouro Verde", "Paial", "Painel", "Palhoça", "Palma Sola", "Palmeira", "Palmitos", "Papanduva", "Paraíso", "Passo de Torres", "Passos Maia", "Paulo Lopes", "Pedras Grandes", "Penha", "Peritiba", "Petrolândia", "Piçarras", "Pinhalzinho", "Pinheiro Preto", "Piratuba", "Planalto Alegre", "Pomerode", "Ponte Alta", "Ponte Alta do Norte", "Ponte Serrada", "Porto Belo", "Porto União", "Pouso Redondo", "Praia Grande", "Presidente Castelo Branco", "Presidente Getúlio", "Presidente Nereu", "Princesa", "Quilombo", "Rancho Queimado", "Rio das Antas", "Rio do Campo", "Rio do Oeste", "Rio do Sul", "Rio dos Cedros", "Rio Fortuna", "Rio Negrinho", "Rio Rufino", "Riqueza", "Rodeio", "Romelândia", "Salete", "Saltinho", "Salto Veloso", "Sangão", "Santa Cecília", "Santa Helena", "Santa Rosa de Lima", "Santa Rosa do Sul", "Santa Terezinha", "Santa Terezinha do Progresso", "Santiago do Sul", "Santo Amaro da Imperatriz", "São Bento do Sul", "São Bernardino", "São Bonifácio", "São Carlos", "São Cristovão do Sul", "São Domingos", "São Francisco do Sul", "São João Batista", "São João do Itaperiú", "São João do Oeste", "São João do Sul", "São Joaquim", "São José", "São José do Cedro", "São José do Cerrito", "São Lourenço do Oeste", "São Ludgero", "São Martinho", "São Miguel da Boa Vista", "São Miguel do Oeste", "São Pedro de Alcântara", "Saudades", "Schroeder", "Seara", "Serra Alta", "Siderópolis", "Sombrio", "Sul Brasil", "Taió", "Tangará", "Tigrinhos", "Tijucas", "Timbé do Sul", "Timbó", "Timbó Grande", "Três Barras", "Treviso", "Treze de Maio", "Treze Tílias", "Trombudo Central", "Tubarão", "Tunápolis", "Turvo", "União do Oeste", "Urubici", "Urupema", "Urussanga", "Vargeão", "Vargem", "Vargem Bonita", "Vidal Ramos", "Videira", "Vitor Meireles", "Witmarsum", "Xanxerê", "Xavantina", "Xaxim", "Zortéa"};
 
     ArrayAdapter<String> adapter;
+
+    private String itemSpinner;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +48,23 @@ public class TelaEndereco extends Fragment{
 
         onClickSpinner(spinnerEstado);
         onClickSpinner(spinnerLocal);
+
         editTextOutro.setVisibility(View.GONE);
+
+        carregaEnderecoo();
+        Button button = (Button) v.findViewById(R.id.buttonSaveEndereco);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                // TODO: Enviar valor de estado, local e municipio
+                HttpEndereco http_endereco = new HttpEndereco("5b0f1301e9624b001440cbff", "5b0f1301e9624b001440cbfa", autoCompleteTextViewCidade.getText().toString(), editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString());
+                http_endereco.execute();
+
+            }
+        });
+
         return v;
     }
 
@@ -53,15 +72,18 @@ public class TelaEndereco extends Fragment{
     public void onClickSpinner(View v) {
 
         if (v.getId() == R.id.spinnerEstado) {
-            if (((Spinner) v).getSelectedItem().toString().equals("RS")) {
+            if (((Spinner) v).getSelectedItem().toString().equals("Rio Grande do Sul")) {
                 adapter = new ArrayAdapter<>(this.getContext(),
                         android.R.layout.simple_list_item_1, cidadesRS);
                 autoCompleteTextViewCidade.setAdapter(adapter);
-            } else {
+            } else if(spinnerEstado.getSelectedItem().toString().equals("Santa Catarina")){
                 adapter = new ArrayAdapter<>(this.getContext(),
                         android.R.layout.simple_list_item_1, cidadesSC);
                 autoCompleteTextViewCidade.setAdapter(adapter);
-            }
+             } else {
+                String[] autoCompleteVazio = {};
+                adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, autoCompleteVazio);
+            } 
         } else {
             if (((Spinner) v).getSelectedItem().toString().equals("Outro")) {
                 editTextOutro.setVisibility(View.VISIBLE);
@@ -72,39 +94,69 @@ public class TelaEndereco extends Fragment{
         }
     }
 
-    public String localSelecionado(){
-        if(spinnerLocal.getSelectedItem().toString().equals("Outro")){
-            return editTextOutro.toString();
-        } else {
-            return spinnerLocal.getSelectedItem().toString();
-        }
-    }
-
-    public void sendMassage(View view){
-        String local = localSelecionado();
-        try{
-            HttpEndereco t  = new HttpEndereco(local, spinnerEstado.getSelectedItem().toString(), autoCompleteTextViewCidade.getText().toString(),
-                                        editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString(),
-                                        StaticProperties.getId());
-            t.execute();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     public static TelaEndereco newInstance() {
         TelaEndereco f = new TelaEndereco();
         return f;
     }
-}
 
-//route: /endereco/{idOcorrencia} | method: PATCH | params:
-//        {
-//        "tipoLocal": String,
-//        "estado": String,
-//        "municipio": String,
-//        "logradouro": String,
-//        "complemento": String,
-//        "_id": Ocorrencia._id
-//        }
-//        | Headers: {"x-access-token": [JWT TOKEN]) } [DEVE ESTAR AUTENTICADO]
+    public void carregaEnderecoo(){
+
+        boolean aux = false;
+
+        itemSpinner = CarregarOcorrencia.getEndEstado();
+        if(itemSpinner == null){
+            spinnerEstado.setSelection(0);
+        } else {
+            for(int i = 1; i < spinnerEstado.getAdapter().getCount(); i++){
+                if(itemSpinner.equalsIgnoreCase(spinnerEstado.getItemAtPosition(i).toString())) {
+                    spinnerEstado.setSelection(i);
+                    if (spinnerEstado.getSelectedItem().toString().equals("Rio Grande do Sul")) {
+                        adapter = new ArrayAdapter<>(getContext(),
+                                android.R.layout.simple_list_item_1, cidadesRS);
+                        autoCompleteTextViewCidade.setAdapter(adapter);
+                    } else if(spinnerEstado.getSelectedItem().toString().equals("Santa Catarina")){
+                        adapter = new ArrayAdapter<>(getContext(),
+                                android.R.layout.simple_list_item_1, cidadesSC);
+                        autoCompleteTextViewCidade.setAdapter(adapter);
+                    } else {
+                        String[] autoCompleteVazio = {};
+                        adapter = new ArrayAdapter<>(getContext(),
+                                android.R.layout.simple_list_item_1, autoCompleteVazio);
+                        autoCompleteTextViewCidade.setAdapter(adapter);
+                    }
+                    break;
+
+                }
+            }
+        }
+
+        autoCompleteTextViewCidade.setText(CarregarOcorrencia.getEndCidade());
+
+
+
+        itemSpinner = CarregarOcorrencia.getEndLocal();
+
+        if(itemSpinner == null){
+            spinnerLocal.setSelection(0);
+        } else {
+            for(int i = 1; i < spinnerLocal.getAdapter().getCount(); i++){
+                if(itemSpinner.equalsIgnoreCase(spinnerLocal.getItemAtPosition(i).toString())){
+                    spinnerLocal.setSelection(i);
+                    aux = true;
+                    break;
+                }
+            }
+            if(!aux){
+                spinnerLocal.setSelection(spinnerLocal.getAdapter().getCount()-1);
+                editTextOutro.setVisibility(View.VISIBLE);
+                editTextOutro.setText(itemSpinner);
+            }
+        }
+
+        editTextRua.setText(CarregarOcorrencia.getEndRua());
+        editTextNumero.setText(CarregarOcorrencia.getEndNumero());
+        editTextComplemento.setText(CarregarOcorrencia.getEndComplemento());
+    }
+
+}
