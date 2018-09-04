@@ -1,0 +1,61 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
+
+    <string name="localPrompt">Local</string>
+
+    <string-array name="tipo">
+        <item>Selecione o tipo de delito</item>
+        <item>Dano</item>
+        <item>Arrombamento(não houve furto)</item>
+        <item>Furto sem arrombamento</item>
+        <item>Furto com arrombamento</item>
+        <item>Roubo</item>
+        <item>Drogas</item>
+        <item>Moeda falsa</item>
+        <item>Falsidade ideológica</item>
+        <item>Não houve crime</item>
+        <item>Ignorar formulário</item>
+        <item>Outro</item>
+    </string-array>
+
+
+
+    <string-array name="localList">
+        <item>Escolha um local</item>
+        <item>Correios</item>
+        <item>CEF</item>
+        <item>Universidade Federal</item>
+        <item>Colega</item>
+        <item>DNIT</item>
+        <item>Instituto Federal</item>
+        <item>Drogas</item>
+        <item>Moeda Falsa</item>
+        <item>Estrangeiro</item>
+        <item>Ignorar Formulário</item>
+        <item>Outro</item>
+
+    </string-array>
+
+    <string name="estadoPrompt">Estado</string>
+
+    <string-array name="estadoList">
+        <item>Escolha um estado</item>
+        <item>RS</item>
+        <item>SC</item>
+    </string-array>
+
+    <string name="cidadePrompt">Cidade</string>
+
+
+
+
+
+
+</resources>
